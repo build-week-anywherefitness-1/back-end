@@ -23,8 +23,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
-        const classToAdd = await Instructor.addClass(req.body);
-        res.status(200).json(classToAdd);
+        const newClass = await Instructor.addClass(req.body);
+        res.status(200).json(newClass);
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Error adding class" })
