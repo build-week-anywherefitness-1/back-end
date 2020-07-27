@@ -1,32 +1,15 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
-    find,
+    get,
     findById,
     addClass,
     updateClass,
     deleteClass,
 };
 
-function find() {
-    return db('userclass')
-        .select(
-            'userclass.id as userclass_id',
-            'users.username',
-            'users.id as user_id',
-            'classes.className',
-            'classes.id as class_id',
-            'classes.classtype',
-            'classes.date',
-            'classes.time',
-            'classes.duration',
-            'classes.location',
-            'classes.intensityLevel',
-            'classes.currentAttendeesNo',
-            'classes.maxsize',
-        )
-        .join('classes', 'userclass.classid', '=', 'classes.id')
-        .join('users', 'userclass.userid', '=', 'users.id');
+function get() {
+    return db('classes');
 }
 
 function findById(id) {

@@ -9,7 +9,7 @@ server.use(cors());
 server.use(express.json());
 
 const authRouter = require("./auth/auth-router");
-const instructorsRouter = require("./instructors/instructors-router");
+const instructorsRouter = require("../instructors/instructors-router");
 
 const restricted = require("../middleware/auth-restricted");
 

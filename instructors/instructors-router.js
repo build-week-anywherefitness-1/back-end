@@ -3,7 +3,7 @@ const Instructor = require("./instructors-model");
 
 router.get('/', async (req, res) => {
     try {
-        const classes = await Instructor.find();
+        const classes = await Instructor.get();
         res.status(200).json(classes);
     } catch (err) {
         console.log(err);
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         const deletedClass = await Instructor.deleteClass(req.params.id);
         res.status(200).json(deletedClass);
@@ -50,3 +50,5 @@ router.delete('/:id', (req, res) => {
         res.status(500).json({ error: "Error deleting class" });
     }
 })
+
+module.exports = router;
