@@ -15,14 +15,10 @@ https://anywherefitness-app.herokuapp.com/<br>
 
 ## Instructor
 
-| Method | Endpoint                | Body (_Required_)        | Body (optional) | Notes                                                                 |
-| ------ | ----------------------- | ------------------------ | --------------- | --------------------------------------------------------------------- |
-| GET    | /instructor/classes     | N/A                      | N/A             | Returns an array of classes.                                          |
-| GET    | /instructor/classes/:id | classid                  | N/A             | Returns a single class.                                               |
-| POST   | /instructor/classes     | classname, location,     | N/A             | Creates a new class. On success return newClass object.               |
-|        |                         | date, time, classtype,   |                 |                                                                       |
-|        |                         | duration, intensity,     |                 |                                                                       |
-|        |                         | currentAttendeesNo,      |                 |                                                                       |
-|        |                         | maxSize                  |                 |                                                                       |
-| PUT    | /instructor/classes/:id | class, classid           | N/A             | Edits a class. On success returns newClass object.                    |
-| DELETE | /instructor/classes/:id | classid                  | N/A             | Deletes a class. On success returns deletedClass objects.             |
+| Method | Endpoint                | Body (_Required_)                                                                            | Body (optional) | Notes                                                                 |
+| ------ | ----------------------- | ------------------------                                                                     | --------------- | --------------------------------------------------------------------- |
+| GET    | /instructor/classes     | N/A                                                                                          | N/A             | Returns an array of classes.                                          |
+| GET    | /instructor/classes/:id | classid                                                                                      | N/A             | Returns a single class.                                               |
+| POST   | /instructor/classes     | classname, location, date, time, classtype, duration, intensity, currentAttendeesNo, maxSize | N/A             | Creates a new class. On success return newClass object.               |
+| PUT    | /instructor/classes/:id | class, classid                                                                               | N/A             | Edits a class. On success returns newClass object.                    |
+| DELETE | /instructor/classes/:id | classid                                                                                      | N/A             | Deletes a class. On success returns deletedClass objects.             |
