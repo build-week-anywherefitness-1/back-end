@@ -21,10 +21,10 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/:id', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const newClass = await Instructor.addClass(req.body);
-        const userId = Number(req.params.id);
+        const userId = Number(req.jwt.userId);
         const classId = newClass[0].id;
 
         await Instructor.addClassToUser(userId, classId);
