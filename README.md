@@ -2,7 +2,7 @@
 
 ## Heroku API
 
-https://anywherefitness-app.herokuapp.com/<br>
+https://app-anywherefitness.herokuapp.com/api
 
 # `API Endpoints`
 
