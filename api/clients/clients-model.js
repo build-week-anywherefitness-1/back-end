@@ -2,7 +2,7 @@ const db = require("../../data/dbConfig");
 const { select, distinct } = require("../../data/dbConfig");
 
 const getAllClasses = () => {
-  return db("classes").select("*").distinctOn("classname");
+  return db("classes").select("*");
 };
 
 const getClientClasses = (id) => {
@@ -19,11 +19,14 @@ function findClassById(id) {
 
 const enrollAClass = async (id, classId) => {
   await db("userclass").insert({ userid: id, classid: classId });
-  return findById(classId);
+  return findClassById(classId);
 };
 
 const cancelAClass = (id, classId) => {
-  return db("userclass").delete({ userid: id, classid: classId });
+  return db("userclass")
+    .where({ userid: id })
+    .where({ classid: classId })
+    .del();
 };
 
 module.exports = {

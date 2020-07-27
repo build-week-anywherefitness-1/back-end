@@ -9,14 +9,14 @@ server.use(cors());
 server.use(express.json());
 
 const authRouter = require("./auth/auth-router");
-///const instructorsRouter = require("./instructors/instructors-router");
+const instructorsRouter = require("./instructors/instructors-router");
 const clientsRouter = require("./clients/clients-router");
 
 const restricted = require("../middleware/auth-restricted");
 
 server.use("/api/auth", authRouter);
-//server.use("/api/instructor/classes", restricted, instructorsRouter);
-server.use("/api/client/classes", restricted, clientsRouter);
+server.use("/api/instructor/classes", restricted, instructorsRouter);
+server.use("/api/client/classes", restricted, clientRouter);
 
 server.get("/", (req, res) => {
   res.status(200).json({ Welcome: "to Anywhere Fitness." });

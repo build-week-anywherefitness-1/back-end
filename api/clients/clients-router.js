@@ -34,9 +34,13 @@ router.delete("/:classid", (req, res) => {
   const classId = req.params.classid;
   const { userId } = req.jwt;
   Clients.cancelAClass(userId, classId)
-    .then((res) =>
-      res.status(201).json({ message: "Successfully cancel the class." })
-    )
+    .then((deleted) => {
+      if (deleted === 1) {
+        res.status(201).json({ message: "Successfully cancel the class." });
+      } else {
+        res.status(400).json({ message: "Failed Delete!" });
+      }
+    })
     .catch((error) => {
       res.status(500).json({ message: error.message });
     });
