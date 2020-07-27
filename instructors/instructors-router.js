@@ -21,10 +21,15 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/:id', async (req, res) => {
     try {
         const newClass = await Instructor.addClass(req.body);
-        res.status(200).json(newClass);
+        const userId = Number(req.params.id);
+        const classId = newClass[0].id;
+
+        await Instructor.addClassToUser(userId, classId);
+
+        res.status(201).json(newClass);
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: "Error adding class" })

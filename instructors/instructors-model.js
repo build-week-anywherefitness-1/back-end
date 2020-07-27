@@ -6,6 +6,7 @@ module.exports = {
     addClass,
     updateClass,
     deleteClass,
+    addClassToUser
 };
 
 function get() {
@@ -28,3 +29,7 @@ async function updateClass(classes, id) {
 function deleteClass(id) {
     return db('classes').where({ id }).del();
 }
+
+function addClassToUser(id1, id2) {
+    return db('userclass').insert({ userid: id1, classid: id2 });
+  }
