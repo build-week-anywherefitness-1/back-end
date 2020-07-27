@@ -1,20 +1,47 @@
 const db = require('../data/dbConfig.js');
 
 module.exports = {
+    find,
+    findById,
     addClass,
-    getClasses,
-    getClassById
+    updateClass,
+    deleteClass,
+};
+
+function find() {
+    return db('userclass')
+        .select(
+            'userclass.id as userclass_id',
+            'users.username',
+            'users.id as user_id',
+            'classes.className',
+            'classes.id as class_id',
+            'classes.classtype',
+            'classes.date',
+            'classes.time',
+            'classes.duration',
+            'classes.location',
+            'classes.intensityLevel',
+            'classes.currentAttendeesNo',
+            'classes.maxsize',
+        )
+        .join('classes', 'userclass.classid', '=', 'classes.id')
+        .join('users', 'userclass.userid', '=', 'users.id');
 }
 
-async function addClass(classes) {
-    return await db('classes')
-        .insert(class)
+function findById(id) {
+    return db('classes').where({ id }).first();
 }
 
-async function getClasses() {
-    return await db('classes');
+function addClass(classes) {
+    return db('classes').insert(classes).returning('*');
 }
 
-const getClassById = (id) => {
-    return db("users").where({ id }).first();
-  };
+async function updateClass(classes, id) {
+    await db('classes').update(classes).where({ id });
+    return findById(id);
+}
+
+function deleteClass(id) {
+    return db('classes').where({ id }).del();
+}
