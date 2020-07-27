@@ -6,13 +6,13 @@ module.exports = {
     getClassById
 }
 
-async function addClass(project) {
-    return await db('projects')
-        .insert(project)
+async function addClass(classes) {
+    return await db('classes')
+        .insert(class)
 }
 
 async function getClasses() {
-    return await db('projects');
+    return await db('classes');
 }
 
 const getClassById = (id) => {
