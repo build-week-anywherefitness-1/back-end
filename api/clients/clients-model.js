@@ -29,10 +29,17 @@ const cancelAClass = (id, classId) => {
     .del();
 };
 
+const checkEnrollment = (userId, classId) => {
+  return db("userclass")
+    .select("*")
+    .where({ userid: userId })
+    .where({ classid: classId });
+};
 module.exports = {
   getAllClasses,
   getClientClasses,
   findClassById,
   enrollAClass,
   cancelAClass,
+  checkEnrollment,
 };

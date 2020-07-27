@@ -23,8 +23,21 @@ router.get("/all", (req, res) => {
 router.post("/:classid", (req, res) => {
   const classId = req.params.classid;
   const { userId } = req.jwt;
-  Clients.enrollAClass(userId, classId)
-    .then((classes) => res.status(201).json({ data: classes }))
+  Clients.checkEnrollment(userId, classId)
+    .then((returnedClass) => {
+      if (returnedClass.length !== 0) {
+        res
+          .status(500)
+          .json({ message: "You are already enrolled in this class" });
+      } else {
+        Clients.enrollAClass(userId, classId)
+          .then((classes) => res.status(201).json({ data: classes }))
+          .catch((error) => {
+            res.status(500).json({ message: error.message });
+          });
+      }
+    })
+
     .catch((error) => {
       res.status(500).json({ message: error.message });
     });
