@@ -19,6 +19,7 @@ function findClassById(id) {
 
 const enrollAClass = async (id, classId) => {
   await db("userclass").insert({ userid: id, classid: classId });
+
   return findClassById(classId);
 };
 

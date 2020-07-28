@@ -4,9 +4,10 @@ const Clients = require("./clients-model");
 
 router.get("/", (req, res) => {
   const { userId } = req.jwt;
-
   Clients.getClientClasses(userId)
-    .then((classes) => res.status(201).json({ data: classes }))
+    .then((classes) => {
+      res.status(201).json({ data: classes });
+    })
     .catch((error) => {
       res.status(500).json({ message: error.message });
     });

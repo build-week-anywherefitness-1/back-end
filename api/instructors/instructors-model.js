@@ -10,6 +10,7 @@ module.exports = {
 };
 
 function getInstructorClasses(id) {
+  console.log(id);
   return db("userclass as uc")
     .join("users as u", "uc.userid", "u.id")
     .join("classes as c", "uc.classid", "c.id")
@@ -23,12 +24,8 @@ function findById(id) {
 
 async function addClass(id, newClass) {
   const [classid] = await db("classes").insert(newClass, "id");
-  db("userclass")
-    .insert({ userid: id, classid: classid })
-    .then((res) => {
-      console.log("I am here");
-      console.log(res);
-    });
+  db("userclass").insert({ userid: id, classid: classid });
+
   return findById(classid);
 }
 
@@ -37,14 +34,11 @@ async function updateClass(classes, id) {
   return findById(id);
 }
 
-async function deleteClass(classId, userId) {
+async function deleteClass(id) {
   const promise1 = await findById(id);
-  await db("userclass")
-    .where({ userid: userId })
-    .where({ classid: classId })
-    .del();
+  await db("userclass").where({ classid: id }).del();
   const promise2 = db("classes")
-    .where({ classId })
+    .where({ id })
     .del()
     .then(() => {
       return promise1;
