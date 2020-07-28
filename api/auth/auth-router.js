@@ -8,6 +8,10 @@ const Users = require("./auth-model");
 router.post("/register", (req, res) => {
   const credentials = req.body;
 
+  const rounds = process.env.BCRYPT_ROUNDS || 8;
+  const hash = bcrypjs.hashSync(credentials.password, rounds);
+  credentials.password = hash;
+
   Users.add(credentials)
     .then((user) => {
       const token = makeJwt(user);
@@ -23,7 +27,7 @@ router.post("/login", (req, res) => {
 
   Users.findBy({ username: username })
     .then((user) => {
-      if (user && password === user.password) {
+      if (user && bcrypjs.compareSync(password, user.password)) {
         const token = makeJwt(user);
         res
           .status(200)
