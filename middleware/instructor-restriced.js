@@ -6,10 +6,9 @@ module.exports = (req, res, next) => {
 
   if (token) {
     jwt.verify(token, secret, (err, decodedToken) => {
-      if (err) {
+      if (err || decodedToken.role !== "instructor") {
         res.status(401).json({ warning: "No Access!" });
       } else {
-        // token is good we can see the data inside the decodedToken
         req.jwt = decodedToken;
         next();
       }

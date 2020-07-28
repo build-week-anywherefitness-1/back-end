@@ -7,7 +7,7 @@ exports.up = function (knex) {
     tbl.string("time", 56).notNullable();
     tbl.string("classtype", 128);
     tbl.string("duration", 56);
-    tbl.string("intensitylevel", 128);
+    tbl.string("intensityLevel", 128);
     tbl.integer("currentAttendeesNo");
     tbl.integer("maxsize");
   });

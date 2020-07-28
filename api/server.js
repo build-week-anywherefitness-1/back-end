@@ -12,11 +12,12 @@ const authRouter = require("./auth/auth-router");
 const instructorsRouter = require("./instructors/instructors-router");
 const clientRouter = require("./clients/clients-router");
 
-const restricted = require("../middleware/auth-restricted");
+const instructorRestricted = require("../middleware/instructor-restriced");
+const clientRestricted = require("../middleware/client-restricted");
 
 server.use("/api/auth", authRouter);
-server.use("/api/instructor/classes", restricted, instructorsRouter);
-server.use("/api/client/classes", restricted, clientRouter);
+server.use("/api/instructor/classes", instructorRestricted, instructorsRouter);
+server.use("/api/client/classes", clientRestricted, clientRouter);
 
 server.get("/", (req, res) => {
   res.status(200).json({ Welcome: "to Anywhere Fitness." });
