@@ -17,7 +17,7 @@ https://app-anywherefitness.herokuapp.com/api
 
 | Method | Endpoint                | Body (_Required_)                | Body (optional)                                             | Notes                                                     |
 | ------ | ----------------------- | -------------------------------- | ----------------------------------------------------------- | --------------------------------------------------------- |
-| GET    | /client/classes/all     | N/A                              | N/A                                                         | Returns an array of classes are avalibale                 |
+| GET    | /instructor/classes/all | N/A                              | N/A                                                         | Returns an array of classes are avalibale                 |
 | GET    | /instructor/classes     | N/A                              | N/A                                                         | Returns an array of classes of the logged in instructor.  |
 | GET    | /instructor/classes/:id | classid                          | N/A                                                         | Returns a single class.                                   |
 | POST   | /instructor/classes     | classname, location, date, time, | classtype, duration, intensity, currentAttendeesNo, maxSize | Creates a new class. On success return newClass object.   |
