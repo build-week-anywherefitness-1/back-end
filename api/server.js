@@ -10,7 +10,7 @@ server.use(express.json());
 
 const authRouter = require("./auth/auth-router");
 const instructorsRouter = require("./instructors/instructors-router");
-const clientsRouter = require("./clients/clients-router");
+const clientRouter = require("./clients/clients-router");
 
 const restricted = require("../middleware/auth-restricted");
 
