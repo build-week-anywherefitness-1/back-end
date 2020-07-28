@@ -7,10 +7,10 @@ module.exports = {
   updateClass,
   deleteClass,
   getAllClasses,
+  // getUserClass,
 };
 
 function getInstructorClasses(id) {
-  console.log(id);
   return db("userclass as uc")
     .join("users as u", "uc.userid", "u.id")
     .join("classes as c", "uc.classid", "c.id")
@@ -24,7 +24,7 @@ function findById(id) {
 
 async function addClass(id, newClass) {
   const [classid] = await db("classes").insert(newClass, "id");
-  db("userclass").insert({ userid: id, classid: classid });
+  await db("userclass").insert({ userid: id, classid: classid });
 
   return findById(classid);
 }
@@ -49,3 +49,7 @@ async function deleteClass(id) {
 function getAllClasses() {
   return db("classes").select("*");
 }
+
+// function getUserClass() {
+//   return db("userclass").select("*");
+// }

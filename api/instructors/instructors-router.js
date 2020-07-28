@@ -1,5 +1,12 @@
 const router = require("express").Router();
 const Instructor = require("./instructors-model");
+// router.get("/userclass", (req, res) => {
+//   Instructor.getUserClass()
+//     .then((userclass) => res.status(201).json({ data: userclass }))
+//     .catch((error) => {
+//       res.status(500).json({ message: error.message });
+//     });
+// });
 
 router.get("/all", (req, res) => {
   Instructor.getAllClasses()
@@ -35,7 +42,6 @@ router.post("/", (req, res) => {
 
   Instructor.addClass(userId, aClass)
     .then((newClass) => {
-      console.log(newClass);
       res.status(201).json({ data: newClass });
     })
     .catch((error) => {
