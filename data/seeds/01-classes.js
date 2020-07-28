@@ -6,7 +6,6 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("classes").insert([
         {
-          id: 1,
           classname: "Yoga",
           location: "Anywhere Fitness",
           date: "08/05/2020",
@@ -18,7 +17,6 @@ exports.seed = function (knex) {
           maxsize: 30,
         },
         {
-          id: 2,
           classname: "Kickboxing",
           location: "Anywhere Fitness",
           date: "08/06/2020",
@@ -30,7 +28,6 @@ exports.seed = function (knex) {
           maxsize: 30,
         },
         {
-          id: 3,
           classname: "Zumba",
           location: "Anywhere Fitness",
           date: "08/08/2020",
@@ -42,7 +39,6 @@ exports.seed = function (knex) {
           maxsize: 30,
         },
         {
-          id: 4,
           classname: "Pilates",
           location: "Anywhere Fitness",
           date: "08/10/2020",
@@ -54,7 +50,6 @@ exports.seed = function (knex) {
           maxsize: 30,
         },
         {
-          id: 5,
           classname: "Spinning",
           location: "Anywhere Fitness",
           date: "08/12/2020",
@@ -66,7 +61,6 @@ exports.seed = function (knex) {
           maxsize: 30,
         },
         {
-          id: 6,
           classname: "Barre",
           location: "Anywhere Fitness",
           date: "08/14/2020",
@@ -78,7 +72,6 @@ exports.seed = function (knex) {
           maxsize: 30,
         },
         {
-          id: 7,
           classname: "Boot Camp",
           location: "Anywhere Fitness",
           date: "08/12/2020",
@@ -90,7 +83,6 @@ exports.seed = function (knex) {
           maxsize: 30,
         },
         {
-          id: 8,
           classname: "CrossFit",
           location: "Anywhere Fitness",
           date: "08/16/2020",
