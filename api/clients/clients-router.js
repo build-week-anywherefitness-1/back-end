@@ -64,7 +64,7 @@ router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
-  Client.findById(id)
+  Clients.findById(id)
     .then((aClass) => {
       if (aClass) {
         Instructor.updateClass(changes, id).then((updatedClass) => {
