@@ -39,7 +39,7 @@ const checkEnrollment = (userId, classId) => {
 
 async function updateClass(classes, id) {
   await db("classes").update(classes).where({ id });
-  return findById(id);
+  return findClassById(id);
 }
 module.exports = {
   getAllClasses,

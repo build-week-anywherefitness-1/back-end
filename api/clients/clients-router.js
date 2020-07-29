@@ -64,10 +64,10 @@ router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
-  Clients.findById(id)
+  Clients.findClassById(id)
     .then((aClass) => {
       if (aClass) {
-        Instructor.updateClass(changes, id).then((updatedClass) => {
+        Clients.updateClass(changes, id).then((updatedClass) => {
           res.status(200).json(updatedClass);
         });
       } else {
