@@ -60,4 +60,23 @@ router.delete("/:classid", (req, res) => {
     });
 });
 
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+
+  Client.findById(id)
+    .then((aClass) => {
+      if (aClass) {
+        Instructor.updateClass(changes, id).then((updatedClass) => {
+          res.status(200).json(updatedClass);
+        });
+      } else {
+        res.status(404).json({ message: "Could not find class with given id" });
+      }
+    })
+    .catch((error) => {
+      res.status(500).json({ message: error.message });
+    });
+});
+
 module.exports = router;
