@@ -13,7 +13,7 @@ exports.seed = function (knex) {
           classtype: "Yoga",
           duration: "1h",
           intensityLevel: "Beginner",
-          currentAttendeesNo: 0,
+          currentAttendeesNo: 1,
           maxsize: 30,
         },
         {
@@ -24,7 +24,7 @@ exports.seed = function (knex) {
           classtype: "Kickboxing",
           duration: "1h",
           intensityLevel: "Intermediate",
-          currentAttendeesNo: 0,
+          currentAttendeesNo: 2,
           maxsize: 30,
         },
         {
@@ -35,7 +35,7 @@ exports.seed = function (knex) {
           classtype: "Zumba",
           duration: "1h",
           intensityLevel: "Beginner",
-          currentAttendeesNo: 0,
+          currentAttendeesNo: 1,
           maxsize: 30,
         },
         {
@@ -46,7 +46,7 @@ exports.seed = function (knex) {
           classtype: "Pilates",
           duration: "1h",
           intensityLevel: "Advanced",
-          currentAttendeesNo: 0,
+          currentAttendeesNo: 1,
           maxsize: 30,
         },
         {
@@ -68,7 +68,7 @@ exports.seed = function (knex) {
           classtype: "Barre",
           duration: "1h",
           intensityLevel: "Intermediate",
-          currentAttendeesNo: 0,
+          currentAttendeesNo: 1,
           maxsize: 30,
         },
         {
